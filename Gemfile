@@ -34,6 +34,12 @@ gem 'sdoc',require: false,          group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+group :test do
+	gem 'rspec-rails'
+	gem 'factory_girl_rails'
+	gem 'ffaker'
+end
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
