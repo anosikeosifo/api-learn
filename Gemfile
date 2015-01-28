@@ -40,6 +40,8 @@ group :test do
 	gem 'ffaker'
 end
 
+gem 'devise'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
