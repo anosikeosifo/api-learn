@@ -51,5 +51,8 @@ describe Api::V1::UsersController do
 
 			it { should respond_with 422 }
 		end
-	end	
+	end
+
+
+	
 end
