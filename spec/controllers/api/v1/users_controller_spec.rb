@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe Api::V1::UsersController do
-	before(:each) { request.headers['Accept'] = "application/vnd.marketplace.v1" }
-
+	#concatenate the json format
 	#this test is failing so i commented it out.
 	# describe "GET #index" do
 	# 	before(:each) do
@@ -12,7 +11,7 @@ describe Api::V1::UsersController do
 	# 		@lonimi = FactoryGirl.create(:user, name: "Lonimi", email: "nimi@email.com")
 	# 		@faridah = FactoryGirl.create(:user, name: "faridah", email: "faridah@email.com")
 
-	# 		get :index, format: :json
+	# 		get :index
 	# 	end
 
 	# 	it "should return a list of users" do
@@ -26,7 +25,7 @@ describe Api::V1::UsersController do
 	describe "GET #show" do
 		before(:each) do
 			@user = FactoryGirl.create :user
-			get :show, id: @user.id, format: :json
+			get :show, id: @user.id
 		end
 
 		it "returns information about a user on a hash" do
@@ -42,7 +41,7 @@ describe Api::V1::UsersController do
 		context "when user is successfully created" do
 			before(:each) do
 				@user_attr = FactoryGirl.attributes_for :user #this supplies the attribtutes, but doesn't create the user
-				post :create, { user: @user_attr }, format: :json
+				post :create, { user: @user_attr }
 			end
 
 			it "renders the json representation of the newly created user" do
@@ -56,7 +55,7 @@ describe Api::V1::UsersController do
 		context "when user creation fails" do
 			before(:each) do 
 				@wrong_user_attr = { pasword: "12345678", password_confirmation: "12345678" }
-				post :create, { user: @wrong_user_attr }, format: :json
+				post :create, { user: @wrong_user_attr }
 			end
 
 			it "should render an error json result" do
@@ -78,7 +77,7 @@ describe Api::V1::UsersController do
 		context "when user update is successful" do
 			before(:each) do 
 				@user = FactoryGirl.create :user
-				patch :update, { id: @user.id, user: { email: "newemail@user.com" } }, format: :json
+				patch :update, { id: @user.id, user: { email: "newemail@user.com" } }
 			end
 
 			it "renders the json representation of the updated user" do
@@ -92,7 +91,7 @@ describe Api::V1::UsersController do
 		context "when user update fails" do
 			before(:each) do
 				@user = FactoryGirl.create :user
-				patch :update, { id: @user.id, user: { email: "wrongemail.com" } }, format: :json
+				patch :update, { id: @user.id, user: { email: "wrongemail.com" } }
 			end
 
 			it "renders an error json showing update failure" do
@@ -113,7 +112,7 @@ describe Api::V1::UsersController do
 	describe "DELETE #delete" do
 		before(:each) do
 			@user = FactoryGirl.create :user
-			delete :destroy, { id: @user.id }, format: :json
+			delete :destroy, { id: @user.id }
 		end
 
 		it { should respond_with 204 }
