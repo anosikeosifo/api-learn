@@ -43,6 +43,14 @@ end
 
 gem 'devise'
 
+
+#for json testing
+gem 'sabisu_rails', github: "IcaliaLabs/sabisu-rails"
+gem 'compass-rails'
+gem 'furatto'
+gem 'font-awesome-rails'
+gem 'simple_form'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -3,7 +3,9 @@ MarketPlaceApi::Application.routes.draw do
   devise_for :users
   namespace :api, defaults: { format: :json } , constraints: { subdomain: 'api' }, path: '/' do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      resources :users, only: [:show] #routes only the show method for now
+      
+      resources :users, only: [:show, :create] #routes only the show method for now
+    
     end
   end
 end
