@@ -21,7 +21,6 @@ describe Api::V1::UsersController do
 
 	# 	it { should respond_with 200 }
 	# end
-
 	describe "GET #show" do
 		before(:each) do
 			@user = FactoryGirl.create :user
@@ -74,6 +73,11 @@ describe Api::V1::UsersController do
 
 	describe "PUT/PATCH #update" do
 
+		before(:each) do 
+			@user = FactoryGirl.create :user
+			request.headers["Authorization"] = @user.token
+		end
+
 		context "when user update is successful" do
 			before(:each) do 
 				@user = FactoryGirl.create :user
@@ -112,6 +116,7 @@ describe Api::V1::UsersController do
 	describe "DELETE #delete" do
 		before(:each) do
 			@user = FactoryGirl.create :user
+			api_authorization_header @user.auth_token
 			delete :destroy, { id: @user.id }
 		end
 
