@@ -7,6 +7,7 @@ MarketPlaceApi::Application.routes.draw do
       
       resources :users, only: [:index, :show, :create, :update, :destroy] #routes only the show method for now
       resources :sessions, only: [:create, :destroy]
+      resources :products, only: [:show, :index, :create]
     end
   end
 end

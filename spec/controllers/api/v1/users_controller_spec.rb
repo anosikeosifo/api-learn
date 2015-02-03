@@ -3,24 +3,19 @@ require 'rails_helper'
 describe Api::V1::UsersController do
 	#concatenate the json format
 	#this test is failing so i commented it out.
-	# describe "GET #index" do
-	# 	before(:each) do
-	# 		# 3.times do |i|
-	# 		# 	@user = FactoryGirl.create :user				
-	# 		# end
-	# 		@lonimi = FactoryGirl.create(:user, name: "Lonimi", email: "nimi@email.com")
-	# 		@faridah = FactoryGirl.create(:user, name: "faridah", email: "faridah@email.com")
+	describe "GET #index" do
+		before(:each) do
+			3.times { FactoryGirl.create :user }
+			get :index
+		end
 
-	# 		get :index
-	# 	end
+		it "should return a list of 3 users" do
+			users_response = json_response
+			expect(users_response[:users]).to have(3).items
+		end
 
-	# 	it "should return a list of users" do
-	# 		user_response = json_response
-	# 		expect(user_response[0][:email]).to eql @lonimi.email
-	# 	end
-
-	# 	it { should respond_with 200 }
-	# end
+		it { should respond_with 200 }
+	end
 
 	it { should respond_to(:user_signed_in?) }
 
