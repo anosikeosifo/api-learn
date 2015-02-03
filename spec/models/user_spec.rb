@@ -23,6 +23,10 @@ describe User do
 	it { should validate_uniqueness_of(:auth_token) } 
 
 
+	#test association
+	it { should have_many(:products) }
+
+
 
 	describe "#genetate_aunthentication_token" do
 		it "generates a unique token" do
@@ -37,6 +41,23 @@ describe User do
 			@user.generate_auth_token!
 			expect(@user.auth_token).not_to eql existing_user.auth_token #coz its already in use
 		end
-
 	end
+
+	describe "product association" do
+		before do
+			@user.save
+			#creates products and ties it to same user
+			3.times { FactoryGirl.create :product, user: @user } 
+		end
+
+		it "destroys associated products on self destruct" do
+			products = @user.products
+			@user.destroy #attempts destroying the user
+			
+			products.each do |product|
+				expect(Product.find(product)).to raise_error ActiveRecordNotFound
+			end
+		end
+	end
+
 end
