@@ -39,6 +39,7 @@ group :test do
 	gem 'factory_girl_rails'
 	gem 'ffaker'
 	gem 'shoulda-matchers'
+	gem 'shoulda'
 end
 
 gem 'devise'
