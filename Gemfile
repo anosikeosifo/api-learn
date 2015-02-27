@@ -36,10 +36,13 @@ gem 'sdoc',require: false,          group: :doc
 
 group :test do
 	gem 'rspec-rails'
-	gem 'factory_girl_rails'
-	gem 'ffaker'
 	gem 'shoulda-matchers'
 	gem 'shoulda'
+end
+
+group :test, :development do
+	gem 'factory_girl_rails'
+	gem 'ffaker'
 end
 
 gem 'devise'

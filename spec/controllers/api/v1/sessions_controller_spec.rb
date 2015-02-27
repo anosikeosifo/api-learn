@@ -12,7 +12,6 @@ describe Api::V1::SessionsController, :type => :controller do
 				post :create, { session: credentials }
 			end
 
-
 			it "returns the user record associated with the passed credentials" do
 				@user.reload
 				expect(json_response[:auth_token]).to eql @user.auth_token
