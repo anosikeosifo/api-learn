@@ -14,7 +14,7 @@ describe Api::V1::SessionsController, :type => :controller do
 
 			it "returns the user record associated with the passed credentials" do
 				@user.reload
-				expect(json_response[:auth_token]).to eql @user.auth_token
+				expect(json_response[:user][:auth_token]).to eql @user.auth_token
 			end
 
 			it { should respond_with 200 }
@@ -40,8 +40,8 @@ describe Api::V1::SessionsController, :type => :controller do
 	describe "DELETE #destroy" do
 		before(:each) do
 			@user = FactoryGirl.create :user
-			# sign_in @user, store: false
-			delete :destroy #this makse the http DELETE request
+			sign_in @user #, store: false
+			delete :destroy, id: @user.auth_token #this makse the http DELETE request
 		end
 
 		it { should respond_with 204 }  #httpCode item deleted

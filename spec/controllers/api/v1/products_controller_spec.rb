@@ -10,8 +10,9 @@ describe Api::V1::ProductsController do
 
 
 		it "returns a product's information on a hash" do
-			product_response = json_response #this is the result returnd by the http request
+			product_response = json_response[:product]#this is the result returnd by the http request
 			expect(product_response[:title]).to eql @product.title
+			expect(product_response[:user][:id]).to eql @product.user.id
 		end
 
 		it { should respond_with 200 }
@@ -23,9 +24,18 @@ describe Api::V1::ProductsController do
 			get :index #note here that i dont need additional url params
 		end
 
-		it "should return the list (count: 4) of products" do
-			product_response = json_response
-			expect(product_response[:products]).to have(4).items
+		# it "should return the list (count: 4) of products" do
+		# 	product_response = json_response[:product]
+		# 	expect(product_response).to have(4).items
+		# end
+
+
+		it "returns the user object embedded in into each product" do
+			products_response = json_response[:products]
+
+			products_response.each do |response|
+				expect(response[:user]).to be_present
+			end
 		end
 
 		it { should respond_with 200 }
@@ -45,7 +55,7 @@ describe Api::V1::ProductsController do
 
 
 			it "should respond with a json of the record just created" do
-				products_response = json_response
+				products_response = json_response[:product]
 				expect(products_response[:title]).to eql @product_attr[:title]
 			end
 
@@ -89,7 +99,7 @@ describe Api::V1::ProductsController do
 			end
 
 			it "renders the json representation for the updated product" do
-				products_response = json_response
+				products_response = json_response[:product]
 				expect(products_response[:title]).to eql "Newly updated title"
 			end
 
