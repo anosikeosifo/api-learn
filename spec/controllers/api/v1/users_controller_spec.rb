@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Api::V1::UsersController do
-	#concatenate the json format
-	#this test is failing so i commented it out.
+	concatenate the json format
+	this test is failing so i commented it out.
 	describe "GET #index" do
 		before(:each) do
 			3.times { FactoryGirl.create :user }
@@ -10,7 +10,7 @@ describe Api::V1::UsersController do
 		end
 
 		it "should return a list of 3 users" do
-			users_response = json_response
+			users_response = json_response[:users]
 			expect(users_response[:users]).to have(3).items
 		end
 
@@ -26,7 +26,7 @@ describe Api::V1::UsersController do
 		end
 
 		it "returns information about a user on a hash" do
-			user_response = json_response
+			user_response = json_response[:user]
 			expect(user_response[:email]).to eql @user.email
 		end
 
@@ -42,7 +42,7 @@ describe Api::V1::UsersController do
 			end
 
 			it "renders the json representation of the newly created user" do
-				user_response = json_response
+				user_response = json_response[:user]
 				expect(user_response[:email]).to eql @user_attr[:email]
 			end
 
@@ -83,7 +83,7 @@ describe Api::V1::UsersController do
 			end
 
 			it "renders the json representation of the updated user" do
-				user_response = json_response
+				user_response = json_response[:user]
 				expect(user_response[:email]).to eql "newemail@user.com" #response should reflect the updted email
 			end
 
