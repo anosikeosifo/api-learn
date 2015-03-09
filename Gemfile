@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 
 #API gems
 #for proper json serialization
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.8.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc',require: false,          group: :doc
 # Use ActiveModel has_secure_password

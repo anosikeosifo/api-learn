@@ -7,9 +7,9 @@ class Api::V1::UsersController < ApplicationController
 	end
 
 	def show
-		respond_with User.find(params[:id])
+		user  = User.includes(:products).find(params[:id])
+		respond_with user
 	end
-
 
 	def create
 		user  = User.new(user_params)
