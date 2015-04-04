@@ -8,6 +8,7 @@ MarketPlaceApi::Application.routes.draw do
       
       resources :users, only: [:index, :show, :create, :update, :destroy]  do
       	resources :products, only: [:create, :update, :destroy] #nested route, cos the products are created by users
+        resources :orders, only: [:index, :show]
       end
       resources :sessions, only: [:create, :destroy]
       resources :products, only: [:show, :index]

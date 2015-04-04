@@ -25,6 +25,7 @@ describe User do
 
 	#test association
 	it { should have_many(:products) }
+	it { should have_many(:orders) }
 
 
 

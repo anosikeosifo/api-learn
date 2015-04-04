@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
   	#this do-while loop structure ensures that tha token is generated if the user doesnt have any or 
   	# if the one previously generated was invalid(already in use)
   end
-
+  has_many :orders, dependent: :destroy #this ensures referential integrity
   has_many :products, dependent: :destroy
 end
