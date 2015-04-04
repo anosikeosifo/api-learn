@@ -35,14 +35,14 @@ gem 'sdoc',require: false,          group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 group :test do
-	gem 'rspec-rails'
-	gem 'shoulda-matchers'
-	gem 'shoulda'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'shoulda'
 end
 
 group :test, :development do
-	gem 'factory_girl_rails'
-	gem 'ffaker'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
 end
 
 gem 'devise'
@@ -63,4 +63,3 @@ gem 'simple_form'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

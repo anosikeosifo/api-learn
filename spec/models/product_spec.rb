@@ -22,6 +22,10 @@ describe Product do
   #test association
   it { should belong_to :user }
 
+  #relationships with placements and orders
+  it { should have_many :placements }
+  it { should have_many(:orders).through(:placements) }
+
 
 
   describe ".filter_by_title" do
