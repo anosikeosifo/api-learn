@@ -23,14 +23,13 @@ gem 'jquery-rails'
 gem 'rake','10.4.2'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
-
+gem 'spring', group: :development
 
 #API gems
 #for proper json serialization
 gem 'active_model_serializers', '~> 0.8.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc',require: false,          group: :doc
+gem 'sdoc',require: false,  group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
