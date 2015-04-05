@@ -35,6 +35,11 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
 
     it { should respond_with 200 }
 
+    it "includes the total for the order" do
+      order_response = json_response[:order]
+      expect(order_response[:total]).to eql @order.total.to_s
+    end
+
   end
 
   describe "POST #create" do
