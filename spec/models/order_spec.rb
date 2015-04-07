@@ -19,14 +19,14 @@ describe Order  do
 
   describe "#set_total!" do
     before(:each) do
-      product_1 = FactoryGirl.create :product, price: 100
-      product_2 = FactoryGirl.create :product, price: 250
+      product_1 = FactoryGirl.create :product, price: 100, quantity: 2
+      product_2 = FactoryGirl.create :product, price: 250, quantity: 1
 
       @order = FactoryGirl.build :order, product_ids: [product_1.id, product_2.id]
     end
 
     it "returns the sum of product prices as order-total" do
-      expect{ @order.set_total! }.to change{ @order.total }.from(0).to(350)
+      expect{ @order.set_total! }.to change{ @order.total }.from(0).to(450)
     end
   end
 
