@@ -13,7 +13,7 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
 
     it "returns 4 order records by the current user" do
       orders_response = json_response[:orders]
-      expect(orders_response).to have(4).items
+      expect(orders_response.size).to eq(4)
     end
 
     it { should respond_with 200 }
@@ -50,7 +50,7 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       product_a = FactoryGirl.create :product
       product_b = FactoryGirl.create :product
 
-      order_params = { product_ids: [product_a.id, product_b.id] }
+      order_params = { product_ids_and_qty: [[product_a.id, 2], [product_b.id, 3]] }
       post :create, user_id: current_user.id, order: order_params 
     end
 

@@ -3,7 +3,7 @@ class OrderMailer < ActionMailer::Base
 
   def send_confirmation(order)
     @order = order
-    @user @order.user
+    @user = @order.user
     mail to: @user.email, subject: "Order Confirmation"
   end
 end
