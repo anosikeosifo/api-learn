@@ -42,5 +42,24 @@ describe Order  do
       .to change{ order.placements.size }.from(0).to(2)
     end
   end
+
+  describe "#valid?" do
+    before(:each) do
+      product_1 = FactoryGirl.create :product, price: 100.0, quantity: 6
+      product_2 = FactoryGirl.create :product, price: 250.0, quantity: 21
+
+      placement_1 = FactoryGirl.build :placement, product: product_1, quantity: 2
+      placement_2 = FactoryGirl.build :placement, product: product_2, quantity: 14
+    
+      @order = FactoryGirl.build :order
+
+      @order.placements << placement_1
+      @order.placements << placement_2
+    end
+
+    it "becomes invalid only when products are insufficient" do
+      expect(@order).to_not be_invalid
+    end
+  end
 end
 
