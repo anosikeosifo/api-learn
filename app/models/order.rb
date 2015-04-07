@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
   has_many :placements
   has_many :products, through: :placements
 
-
   def set_total!
     self.total = products.map(&:price).sum
     # products.reduce(&+:price)
