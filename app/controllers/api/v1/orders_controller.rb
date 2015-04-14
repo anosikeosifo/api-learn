@@ -13,7 +13,7 @@ class Api::V1::OrdersController < ApplicationController
     }
   end
 
-  def show
+  def sho
     respond_with current_user.orders.find(params[:id])
   end
 
