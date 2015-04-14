@@ -18,8 +18,8 @@ class Order < ActiveRecord::Base
     self.total
   end
 
-  def build_placements_with_product_ids_and_quantity(product_ids_and_quantties) 
-    product_ids_and_quantties.each do |product_id_and_qty|
+  def build_placements_with_product_ids_and_quantity(product_ids_and_quantities) 
+    product_ids_and_quantities.each do |product_id_and_qty|
       id, quantity = product_id_and_qty
 
       self.placements.build(product_id: id, quantity: quantity) #build a placement abd tie it to and order and product_id

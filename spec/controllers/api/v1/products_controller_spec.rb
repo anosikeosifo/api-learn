@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::ProductsController do
+describe Api::V1::ProductsController, type: :controller do
 
   describe "GET #show" do
     before(:each) do
@@ -31,7 +31,7 @@ describe Api::V1::ProductsController do
 
       it "should return 4 items from the database" do
         products_response = json_response
-        expect(products_response[:products]).to have(4).items
+        expect(products_response[:products].size).to eql(4)
       end
 
       it "returns the user object embedded into each product" do
@@ -41,6 +41,13 @@ describe Api::V1::ProductsController do
           expect(response[:user]).to be_present
         end
       end
+
+      #expectations for pagination feature
+      it { expect(json_response).to have_key(:meta) }
+      it { expect(json_response[:meta]). to have_key(:pagination) }
+      it { expect(json_response[:meta][:pagination]).to have_key(:per_page) }
+      it { expect(json_response[:meta][:pagination]).to have_key(:total_pages) }  
+      it { expect(json_response[:meta][:pagination]).to have_key(:total_objects) }  
 
       it { should respond_with 200 }
     end

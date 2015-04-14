@@ -22,7 +22,7 @@ class Product < ActiveRecord::Base
 	scope :recent, lambda{ order(:updated_at) }
 
 	def self.search(params = {})
-		products = params[:product_ids].present? ? Product.find(params[:product_ids]) : Product.all
+		products = params[:product_ids].present? ? Product.where(id: params[:product_ids]) : Product.all
 
 		products = Product.filter_by_title(params[:keyword]) if params[:keyword].present?
 

@@ -12,6 +12,7 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     #build placements for the order
+    order = current_user.orders.build
     order.build_placements_with_product_ids_and_quantity(params[:order][:product_ids_with_qty])
 
     if order.save

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::V1::UsersController do
+describe Api::V1::UsersController, type: :controller  do
   # concatenate the json format this test is failing so i commented it out.
   describe "GET #index" do
     before(:each) do
@@ -8,10 +8,10 @@ describe Api::V1::UsersController do
       get :index
     end
 
-    # it "should return a list of 3 users" do
-    #   users_response = json_response[:users]
-    #   expect(users_response[:users]).to have(3).items
-    # end
+    it "should return a list of 3 users" do
+      users_response = json_response[:users]
+      expect(users_response.size).to eql(3)
+    end
 
     it "should return users and associated product ids" do
       user_response = json_response[:users]

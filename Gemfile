@@ -46,6 +46,7 @@ group :test, :development do
 end
 
 gem 'devise'
+gem 'kaminari' #for pagination
 
 
 #for json testing
