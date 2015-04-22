@@ -56,6 +56,11 @@ GEM
       sass (~> 3.1)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    delayed_job (4.0.6)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.0.3)
+      activerecord (>= 3.0, < 5.0)
+      delayed_job (>= 3.0, < 4.1)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -191,6 +196,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.0)
   coffee-rails (~> 4.0.0)
   compass-rails
+  delayed_job_active_record
   devise
   email_spec
   factory_girl_rails
