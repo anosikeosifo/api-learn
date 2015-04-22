@@ -1,4 +1,5 @@
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+# Dir["./spec/support/**/*.rb"].each { |f| require f }
 
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
